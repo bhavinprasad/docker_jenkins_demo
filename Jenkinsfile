@@ -36,16 +36,11 @@ pipeline {
         script {
           try {
             withCredentials([usernamePassword(credentialsId: '101', usernameVariable: 'bhavinprasad', passwordVariable: 'Password@1')]) {
-              sh ""
-              "
+              sh """
               echo "$DOCKER_PASSWORD" | dockerlogin - u "$DOCKER_USERNAME"--password - stdin
-              docker push $ {
-                DOCKER_IMAGE_NAME
-              }: $ {
-                IMAGE_TAG
-              }
-              ""
-              "
+              docker push $ {DOCKER_IMAGE_NAME}: ${IMAGE_TAG}
+              """
+              
             }
           } catch (Exception e) {
             echo "failed to push the dockerimage ${e.msg}"
