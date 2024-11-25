@@ -12,7 +12,7 @@ pipeline {
           try {
             git branch: 'master', url: "https://github.com/bhavinprasad/docker_jenkins_demo.git"
           } catch (Exception e) {
-            echo "failed to clone the repo ${e.msg}"
+            echo "failed to clone the repo ${e.message}"
             error "failed to clone"
 
           }
@@ -25,7 +25,7 @@ pipeline {
           try {
             docker.build("${DOCKER_IMAGE_NAME}:${IMAGE_TAG}")
           } catch (Exception e) {
-            echo "failed to clone the repo ${e.msg}"
+            echo "failed to clone the repo ${e.message}"
             error "failed to clone"
           }
         }
@@ -43,7 +43,7 @@ pipeline {
               
             }
           } catch (Exception e) {
-            echo "failed to push the dockerimage ${e.msg}"
+            echo "failed to push the dockerimage ${e.message}"
             error "failed to push the Docker image"
           }
         }
