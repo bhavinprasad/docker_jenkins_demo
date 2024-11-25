@@ -37,7 +37,7 @@ pipeline {
           try {
             withCredentials([usernamePassword(credentialsId: '101', usernameVariable: 'bhavinprasad', passwordVariable: 'Password@1')]) {
               sh """
-          //    echo "Password@1" | dockerlogin -u "bhavinprasad"
+              docker login -u "bhavinprasad" -p "Password@1"
               docker push ${DOCKER_IMAGE_NAME}: ${IMAGE_TAG}
               """
               
